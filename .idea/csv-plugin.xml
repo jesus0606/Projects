@@ -10,6 +10,27 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Laboratories\src\Lab1\readTickets.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Laboratories\src\Lab2\Client.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Laboratories\src\Lab2\Server.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
