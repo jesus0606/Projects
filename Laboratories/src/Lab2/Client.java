@@ -30,24 +30,26 @@ public class Client {
                 in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 // писать туда же
                 out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
-            do{
-                //PEDIR NUMERO AL USUARIO
-                do{
-                    mistakes = false;
-                    try{
-                        System.out.print("Enter the numbers of the number of the 1-10:");
-                        numUser = scn.nextInt();
-                    }catch(InputMismatchException e){
-                        System.out.print("\n enter numeric values!\n");
-                        mistakes = true;
-                        scn.nextLine(); //evitar bucle de error
+                Thread listen = new Thread(() -> {
+                    while(true) {
+                        try {
+                            String serverRes = in.readLine();
+                            System.out.println(serverRes);
+                        } catch (IOException e) {
+                            System.err.println("Error from server listener");
+                        }
+
                     }
-                }while(mistakes);
-                out.writeInt(numUser); //enviar num_usuario al server
+                });
+                listen.start();
+            System.out.println("Enter a number from 1-10");
+            String reply;
+            do {
+                String userAnswer = reader.readLine();
+                out.write(userAnswer+"\n");
                 out.flush();
-                guessed = in.readBoolean();
-                System.out.println(in.readUTF());//mostrar resultado del server
-            }while(!guessed);
+            }
+            while (true);
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host ");
             System.exit(1);
